@@ -53,7 +53,7 @@ func (i *ImageInfo) GetContainerImage(containerName string) (string, error) {
 		i.daemonSetNamespace = DefaultDaemonSetNamespace
 	}
 
-	daemonset, err := i.client.AppsV1().DaemonSets(i.daemonSetNamespace).Get(i.daemonSetName, metav1.GetOptions{})
+	daemonset, err := i.client.AppsV1().StatefulSets(i.daemonSetNamespace).Get(i.daemonSetName, metav1.GetOptions{})
 	if err != nil {
 		return "", err
 	}
